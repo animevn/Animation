@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Animation Demo</string>
+    <string name="description">example</string>
+
+
+    <string name="bnFadeIn">Fade In</string>
+    <string name="bnFadeInOut">Fade In Out</string>
+    <string name="bnFadeOut">Fade Out</string>
+    <string name="bnZoomIn">Zoom In</string>
+    <string name="bnZoomOut">Zoom Out</string>
+    <string name="bnRightLeft">Right</string>
+    <string name="bnLeftRight">Left</string>
+    <string name="bnTopDown">Top</string>
+    <string name="bnBounce">Bounce</string>
+    <string name="bnFlash">Flash</string>
+    <string name="bnRotateLeft">Rotate Left</string>
+    <string name="bnRotateRight">Rotate Right</string>
+    <string name="duration">0</string>
+</resources>
