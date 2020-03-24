@@ -1,6 +1,6 @@
-package com.haanhgs.animationdemo.viewmodel;
+package com.haanhgs.animation.viewmodel;
 
-import com.haanhgs.animationdemo.model.Model;
+import com.haanhgs.animation.model.Model;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 

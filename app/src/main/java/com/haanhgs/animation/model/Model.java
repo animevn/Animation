@@ -1,4 +1,4 @@
-package com.haanhgs.animationdemo.model;
+package com.haanhgs.animation.model;
 
 public class Model {
 

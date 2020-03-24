@@ -1,4 +1,4 @@
-package com.haanhgs.animationdemo.model;
+package com.haanhgs.animation.model;
 
 import android.app.Activity;
 import android.view.Surface;
@@ -7,7 +7,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.SeekBar;
-import com.haanhgs.animationdemo.R;
+import com.haanhgs.animation.R;
 
 public class Repo {
 

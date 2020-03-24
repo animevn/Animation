@@ -1,4 +1,4 @@
-package com.haanhgs.animationdemo.view;
+package com.haanhgs.animation.view;
 
 import android.os.Bundle;
 import android.view.Surface;
@@ -9,9 +9,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import com.haanhgs.animationdemo.R;
-import com.haanhgs.animationdemo.model.Repo;
-import com.haanhgs.animationdemo.viewmodel.MyViewModel;
+import com.haanhgs.animation.R;
+import com.haanhgs.animation.model.Repo;
+import com.haanhgs.animation.viewmodel.MyViewModel;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
