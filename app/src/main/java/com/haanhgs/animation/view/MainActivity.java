@@ -1,16 +1,13 @@
 package com.haanhgs.animation.view;
 
 import android.os.Bundle;
-import android.view.Surface;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.haanhgs.animation.R;
-import com.haanhgs.animation.model.Repo;
 import com.haanhgs.animation.viewmodel.MyViewModel;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,16 +55,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton bnIncrease;
 
     private MyViewModel viewModel;
-    private Repo repo;
+    private Helper helper;
     private int duration;
-
-    public void hideStatusBarInLandscapeMode(){
-        int rotation = getWindowManager().getDefaultDisplay().getRotation();
-        if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270){
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
-    }
 
     private void setupViews(){
         sbrDuration.setProgress(2000);
@@ -91,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        repo = new Repo(this);
+        helper = new Helper(this);
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
         viewModel.setLiveData();
         setupViews();
@@ -102,46 +91,46 @@ public class MainActivity extends AppCompatActivity {
     private void handleButtons(View view, int duration){
         switch (view.getId()) {
             case R.id.bnFadeIn:
-                repo.loadAnimations(repo.getAnimFadeIn(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimFadeIn(), ivOutput, duration);
                 break;
             case R.id.bnFadeOut:
-                repo.loadAnimations(repo.getAnimFadeOut(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimFadeOut(), ivOutput, duration);
                 break;
             case R.id.bnFadeInOut:
-                repo.loadAnimations(repo.getAnimFadeInOut(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimFadeInOut(), ivOutput, duration);
                 break;
             case R.id.bnZoomIn:
-                repo.loadAnimations(repo.getAnimZoomIn(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimZoomIn(), ivOutput, duration);
                 break;
             case R.id.bnZoomOut:
-                repo.loadAnimations(repo.getAnimZoomOut(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimZoomOut(), ivOutput, duration);
                 break;
             case R.id.bnRightLeft:
-                repo.loadAnimations(repo.getAnimLeft(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimLeft(), ivOutput, duration);
                 break;
             case R.id.bnLeftRight:
-                repo.loadAnimations(repo.getAnimRight(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimRight(), ivOutput, duration);
                 break;
             case R.id.bnTopDown:
-                repo.loadAnimations(repo.getAnimTopBot(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimTopBot(), ivOutput, duration);
                 break;
             case R.id.bnBounce:
-                repo.loadAnimations(repo.getAnimBounce(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimBounce(), ivOutput, duration);
                 break;
             case R.id.bnFlash:
-                repo.loadAnimations(repo.getAnimFlash(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimFlash(), ivOutput, duration);
                 break;
             case R.id.bnRotateLeft:
-                repo.loadAnimations(repo.getAnimRotateLeft(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimRotateLeft(), ivOutput, duration);
                 break;
             case R.id.bnRotateRight:
-                repo.loadAnimations(repo.getAnimRotateRight(), ivOutput, duration);
+                helper.loadAnimations(helper.getAnimRotateRight(), ivOutput, duration);
                 break;
             case R.id.bnDecrease:
-                repo.handleDecreaseButton(sbrDuration);
+                helper.handleDecreaseButton(sbrDuration);
                 break;
             case R.id.bnIncrease:
-                repo.handleIncreaseButton(sbrDuration);
+                helper.handleIncreaseButton(sbrDuration);
                 break;
         }
     }

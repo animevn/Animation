@@ -1,7 +1,10 @@
-package com.haanhgs.animation.model;
+package com.haanhgs.animation.view;
 
 import android.app.Activity;
+import android.os.Build;
 import android.view.Surface;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -9,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import com.haanhgs.animation.R;
 
-public class Repo {
+public class Helper {
 
     private final Activity activity;
 
@@ -27,11 +30,22 @@ public class Repo {
     private Animation animZoomIn;
     private Animation animZoomOut;
 
+    @SuppressWarnings("deprecation")
     public void hideStatusBarInLandscapeMode(){
-        int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
-        if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270){
-            activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (activity.getDisplay() != null){
+            int rotation = activity.getDisplay().getRotation();
+            if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+                    final WindowInsetsController controller = activity.getWindow()
+                            .getInsetsController();
+                    if (controller != null){
+                        controller.hide(WindowInsets.Type.statusBars());
+                    }
+                }else {
+                    activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                }
+            }
         }
     }
 
@@ -50,7 +64,7 @@ public class Repo {
         animRotateRight = AnimationUtils.loadAnimation(activity, R.anim.rotate_right);
     }
 
-    public Repo(Activity activity) {
+    public Helper(Activity activity) {
         this.activity = activity;
         hideStatusBarInLandscapeMode();
         initAnimation();
